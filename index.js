@@ -5,6 +5,7 @@ import React, { Component, PropTypes } from 'react';
 
 import defaultRules from './defaultRules';
 import defaultMessages from './defaultMessages';
+import _ from 'lodash';
 
 export default class ValidationComponent extends Component {
 
@@ -40,7 +41,13 @@ export default class ValidationComponent extends Component {
       const rules = fields[key];
       if (rules) {
         // Check rule for current field
-        this._checkRules(key, rules, this.state[key]);
+        var fieldKey = rules.errorMessageName || key;
+
+        if (rules.humanize) {
+          fieldKey = this._humanize(key)
+        }
+
+        this._checkRules(fieldKey, rules, this.state[key]);
       }
     };
     return this.isFormValid();
@@ -53,6 +60,7 @@ export default class ValidationComponent extends Component {
       const isRegExp = (this.rules[key] instanceof RegExp);
       if ((isRuleFn && !this.rules[key](rules[key], value)) || (isRegExp && !this.rules[key].test(value))) {
         this._addError(fieldName, key, rules[key], isRuleFn);
+        break;
       }
     }
   }
@@ -96,6 +104,10 @@ export default class ValidationComponent extends Component {
   getErrorMessages(separator="\n") {
     return this.errors.map((err) => err.messages.join(separator)).join(separator);
   }
+
+  _humanize(str) {
+		return _.startCase(_.trim(_.snakeCase(str).replace(/_id$/, '').replace(/_/g, ' ')));
+	}
 }
 
 // PropTypes for component
