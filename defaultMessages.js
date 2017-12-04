@@ -5,6 +5,7 @@ const defaultMessages = {
     en: {
       numbers: '"{0}" must be a valid number.',
       email: '"{0}" must be a valid email address.',
+      phone: '"{0}" must be a valid phone number.',
       required: '"{0}" is required.',
       date: '"{0}" must be a valid date ({1}).',
       minlength: '"{0}" length must be greater than {1}.',
@@ -14,6 +15,7 @@ const defaultMessages = {
     fr: {
       numbers: 'Le champ "{0}" doit être un nombre valide.',
       email: 'Le champ "{0}" doit être une adresse email valide.',
+      phone: 'Le champ "{0}" doit être une phone valide.',
       required: 'Le champ "{0}" est obligatoire.',
       date: 'Le champ "{0}" doit correspondre à une date valide ({1}).',
       minlength: 'Le nombre de caractère du champ "{0}" doit être supérieur à {1}.',

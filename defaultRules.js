@@ -6,6 +6,7 @@ import moment from 'moment';
 const defaultRules = {
   numbers: /^(([0-9]*)|(([0-9]*)\.([0-9]*)))$/,
   email: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+  phone: /^([\+]?[0-9\-()]*)$/,
   required: /\S+/,
   date(format="YYYY-MM-DD", value) {
     const d = moment(value, format);
